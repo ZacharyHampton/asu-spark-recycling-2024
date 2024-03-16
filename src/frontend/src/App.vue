@@ -1,29 +1,20 @@
 <script setup>
   import { Button } from '@/shadcn/components/ui/button'
+  import { Input } from '@/shadcn/components/ui/input'
   import {
-    NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-    NavigationMenuTrigger,
-  } from '@/shadcn/components/ui/navigation-menu'
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 </script>
 
 <template>
-  <div>
-    <NavigationMenu>
-  <NavigationMenuList>
-    <NavigationMenuItem>
-      <NavigationMenuTrigger>Item One</NavigationMenuTrigger>
-      <NavigationMenuContent>
-        <NavigationMenuLink>Link</NavigationMenuLink>
-      </NavigationMenuContent>
-    </NavigationMenuItem>
-  </NavigationMenuList>
-</NavigationMenu>
-
-  </div>
+<div>
+    <Input type="text" Describe your product.../>
+</div>
   <div>
     <Button variant="outline">Click me</Button>
   </div>
