@@ -1,1 +1,9 @@
 scrapy
+pandas
+numpy
+jupyter
+scikit-learn
+pymongo
+spacy
+nltk
+python-dotenv
