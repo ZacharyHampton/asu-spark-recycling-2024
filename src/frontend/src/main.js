@@ -1,8 +1,20 @@
 import { createApp } from 'vue'
-import './assets/index.css'
-import App from './App.vue'
-import { router } from './router.js'
+import { createRouter, createWebHistory } from 'vue-router'
 
-createApp(App)
-    .use(router)
-    .mount('#app')
+import App from './App.vue'
+import HomeView from './views/HomeView.vue'
+import ProductView from './views/ProductView.vue'
+
+const router = createRouter({
+    history: createWebHistory(),
+    routes: [
+        { path: '/', component: HomeView },
+        { path: '/product', component: ProductView },
+    ]
+});
+
+const app = createApp(App)
+
+app.use(router);
+
+app.mount('#app')

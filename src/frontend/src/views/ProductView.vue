@@ -1,4 +1,4 @@
-<script>
+<script setup>
   import {
     NavigationMenu,
     NavigationMenuContent,
@@ -7,10 +7,6 @@
     NavigationMenuList,
     NavigationMenuTrigger,
   } from '@/shadcn/components/ui/navigation-menu/index.js'
-
-  export default {
-      name: "ProductView",
-  }
 </script>
 
 <template>

@@ -1,4 +1,4 @@
-<script>
+<script setup>
   import { Button } from '@/shadcn/components/ui/button/index.js'
   import { Input } from '@/shadcn/components/ui/input/index.js'
   import { Search } from 'lucide-vue-next'
@@ -10,10 +10,6 @@
   CardHeader,
   CardTitle,
 } from '@/shadcn/components/ui/card/index.js'
-
-  export default {
-      name: "HomeView"
-  }
 </script>
 
 <template>
