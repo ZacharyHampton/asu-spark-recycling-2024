@@ -1,10 +1,10 @@
 <script setup>
-import { Button } from '@/shadcn/components/ui/button'
+
 </script>
 
 <template>
 <div>
-    <Button variant="outline">Click me</Button>
+    <router-view></router-view>
 </div>
 </template>
 
