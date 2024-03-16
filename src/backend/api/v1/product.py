@@ -20,8 +20,8 @@ class ProductResponse(BaseModel):
 
 
 class Offers(BaseModel):
-    walmart: float = 0
-    bestbuy: float = 0
+    walmart: Offer = None
+    bestbuy: Offer = None
 
 
 class OfferResponse(BaseModel):
@@ -76,12 +76,12 @@ async def get_offers(uuid: str, data: OfferRequest, db: AsyncIOMotorClient = Dep
             offer: Offer = future.result()
 
             if offer:
-                offers[offer.site_name] = offer.amount
+                offers[offer.site_name] = offer
 
     return OfferResponse(
         success=True,
         offers=Offers(
-            walmart=offers.get('walmart', 0),
-            bestbuy=offers.get('bestbuy', 0)
+            walmart=offers.get('walmart'),
+            bestbuy=offers.get('bestbuy')
         )
     )

@@ -23,7 +23,7 @@ def get_walmart_offer(url: str, data: OfferRequest) -> Offer:
     elif data.working:
         condition = 94
     else:
-        return Offer(site_name="walmart", amount=0)
+        return Offer(site_name="walmart", amount=0, url=url)
 
     response = requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
@@ -71,6 +71,6 @@ def get_walmart_offer(url: str, data: OfferRequest) -> Offer:
 
     if dollars and cents:
         amount = float(dollars.text) + float(cents.text) / 100
-        return Offer(site_name="walmart", amount=amount)
+        return Offer(site_name="walmart", amount=amount, url=url)
 
-    return Offer(site_name="walmart", amount=0)
+    return Offer(site_name="walmart", amount=0, url=url)
