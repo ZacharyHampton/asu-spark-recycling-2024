@@ -9,4 +9,5 @@ class OfferRequest(BaseModel):
 
 class Offer(BaseModel):
     amount: float
+    url: str
     site_name: str
