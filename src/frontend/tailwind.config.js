@@ -23,6 +23,8 @@ module.exports = {
     },
     extend: {
       colors: {
+        'shadcnblack': 'rgb(39, 39, 42)',
+        'shadcngray': 'rgb(192, 196, 196)',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
