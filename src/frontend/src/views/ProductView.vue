@@ -8,22 +8,13 @@ import {
   CardHeader,
   CardTitle,
 } from '../shadcn/components/ui/card'
+import Container from "@/components/Container.vue";
 </script>
 
 <template>
-<div class="hidden items-start justify-center gap-6 rounded-lg p-8 md:grid lg:grid-cols-2 xl:grid-cols-3">
-    <div class="col-span-2 grid items-start gap-6 lg:col-span-1">
-      <Container>
-        <Card>
-          <CardContent class="pt-6">
-            <div class="space-y-2">
-              <Label for="date" class="shrink-0">
-                Pick a date
-              </Label>
-            </div>
-          </CardContent>
-        </Card>
-      </Container>
+<div class="flex flex-col items-center justify-center min-h-screen">
+    <div class="w-full max-w-md">
+      <img src="/logo.webp" alt="" class="mx-auto block" style="width: 100%; max-width: 300px;"> <!-- Adjust the max-width as needed -->
     </div>
 </div>
 </template>

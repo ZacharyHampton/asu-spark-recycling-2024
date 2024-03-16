@@ -34,7 +34,7 @@
 </script>
 
 <template>
-  <div class="flex flex-col items-center justify-center min-h-screen">
+  <div class="flex flex-col items-center justify-start min-h-screen pt-8">
       <!-- Logo Section -->
     <div class="w-full max-w-md">
       <img src="/logo.webp" alt="" class="mx-auto block" style="width: 100%; max-width: 300px;"> <!-- Adjust the max-width as needed -->
