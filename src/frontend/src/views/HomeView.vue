@@ -16,16 +16,27 @@
   <div class="flex items-center justify-center min-h-screen" style="transform: translateY(-18%);"> <!-- Adjusted for vertical move -->
     <div class="relative w-full max-w-sm">
       <Input id="search" type="text" placeholder="Describe your product... "
-             class="pl-8 rounded-lg border-2 border-black focus:outline-none search-font" /> <!-- Prevent additional border on focus -->
+             class="pl-8 rounded-2xl border-2 border-black search-font" /> <!-- Prevent additional border on focus -->
       <span class="absolute start-0 inset-y-0 flex items-center justify-center" style="padding-left: 8px;"> <!-- Adjusted for icon spacing -->
-        <Search class="size-6 text-muted-foreground" />
+        <Search class="size-5 text-muted-foreground" />
       </span>
     </div>
+  </div>
+
+  <div>
+
   </div>
 </template>
 
 <style scoped>
 .search-font {
-    font-family: "geist-sans",serif;
+    font-family: geist, serif
+}
+.search-font:focus {
+    outline:none !important
+}
+@font-face {
+    font-family: geist;
+    src:url("../../public/geist/geist-semibold.woff2")
 }
 </style>
