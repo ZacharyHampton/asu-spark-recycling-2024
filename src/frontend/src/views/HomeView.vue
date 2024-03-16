@@ -56,7 +56,7 @@
         <Search class="size-5 text-muted-foreground" />
       </span>
     </div>
-    <div class="w-full max-w-md bg-shadcngray rounded-2xl p-2" v-if="items.length !== 0">
+    <div class="w-full max-w-md bg-shadcngray rounded-2xl p-2 bg-opacity-10" v-if="items.length !== 0">
       <div>
   <Card
           class="border-2 border-white rounded-2xl card-font mb-2 hover:border-shadcnblack cursor-pointer transition-all duration-300"
