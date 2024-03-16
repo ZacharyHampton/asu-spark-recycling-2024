@@ -1,4 +1,4 @@
-# ASU Spark Challenge Frontend
+# ASU Spark Challenge, Frontend
 
 
 ## Tech Stack
@@ -11,4 +11,5 @@ You can change the theme easily here: https://www.shadcn-vue.com/themes
 ## Project setup
 ```
 npm install
+npm run dev
 ```
