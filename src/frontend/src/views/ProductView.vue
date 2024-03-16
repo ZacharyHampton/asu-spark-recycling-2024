@@ -7,7 +7,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/shadcn/lib/registry/new-york/ui/card'
+} from '../shadcn/components/ui/card'
 </script>
 
 <template>
