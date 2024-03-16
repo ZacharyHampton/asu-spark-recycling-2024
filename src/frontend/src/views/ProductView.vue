@@ -6,7 +6,11 @@
     NavigationMenuLink,
     NavigationMenuList,
     NavigationMenuTrigger,
-  } from '@/shadcn/components/ui/navigation-menu'
+  } from '@/shadcn/components/ui/navigation-menu/index.js'
+
+  export default {
+      name: "ProductView",
+  }
 </script>
 
 <template>
