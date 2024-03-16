@@ -41,7 +41,7 @@
     </div>
     <div class="relative mb-2 max-w-md w-full">
       <Input id="search" type="text" placeholder="Describe your product..."
-             class="pl-8 rounded-2xl border-2 border-shadcnblack search-font w-full" />
+             class="pl-8 rounded-2xl border-2 border-shadcngray hover:border-shadcnblack transition-all duration-300 search-font w-full" />
       <span class="absolute start-0 inset-y-0 flex items-center justify-center" style="padding-left: 8px;">
         <Search class="size-5 text-muted-foreground" />
       </span>
@@ -49,7 +49,7 @@
     <div class="w-full max-w-md bg-shadcngray rounded-2xl p-2">
       <div>
   <Card
-          class="border-2 border-shadcnblack rounded-2xl card-font mb-2 hover:border-white cursor-pointer transition-all duration-300"
+          class="border-2 border-white rounded-2xl card-font mb-2 hover:border-shadcnblack cursor-pointer transition-all duration-300"
           v-for="item in items"
           :key="item.id"
   >

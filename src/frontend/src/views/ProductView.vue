@@ -32,5 +32,19 @@
 </template>
 
 <style scoped>
+.search-font {
+    font-family: geist, serif;
+}
+.card-font {
+    font-family: geist, serif;
+}
 
+.search-font:focus, .search-font:focus-visible {
+    outline:none !important;
+    box-shadow: none !important; /* Remove any box-shadow if applied */
+}
+@font-face {
+    font-family: geist;
+    src:url("../../public/geist/geist-semibold.woff2")
+}
 </style>
