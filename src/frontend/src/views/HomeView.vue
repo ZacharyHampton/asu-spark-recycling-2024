@@ -35,6 +35,10 @@
 
 <template>
   <div class="flex flex-col items-center justify-center min-h-screen">
+      <!-- Logo Section -->
+    <div class="w-full max-w-md">
+      <img src="/logo.webp" alt="" class="mx-auto block" style="width: 100%; max-width: 300px;"> <!-- Adjust the max-width as needed -->
+    </div>
     <div class="relative mb-2 max-w-md w-full">
       <Input id="search" type="text" placeholder="Describe your product..."
              class="pl-8 rounded-2xl border-2 border-shadcnblack search-font w-full" />
