@@ -1,6 +1,6 @@
 <script setup>
-  import { Button } from '@/shadcn/components/ui/button/index.js'
-  import { Input } from '@/shadcn/components/ui/input/index.js'
+  import { Button } from '../shadcn/components/ui/button/index.js'
+  import { Input } from '../shadcn/components/ui/input/index.js'
   import { Search } from 'lucide-vue-next'
   import {
   Card,
@@ -9,7 +9,7 @@
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/shadcn/components/ui/card/index.js'
+} from '../shadcn/components/ui/card/index.js'
 </script>
 
 <template>
