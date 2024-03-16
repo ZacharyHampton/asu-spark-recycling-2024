@@ -1,35 +1,33 @@
 <script setup>
-  import {
-    NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-    NavigationMenuTrigger,
-  } from '@/shadcn/components/ui/navigation-menu/index.js'
+import { cn } from '@/shadcn/lib/utils'
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/shadcn/lib/registry/new-york/ui/card'
 </script>
 
 <template>
-  <nav class="bg-gray-800 p-4 flex justify-between items-center">
-    <!-- Logo container -->
-    <div class="flex items-center">
-      <img src="" alt="Logo" class="h-8 mr-4">
-      <span class="text-white text-lg font-semibold">Your Brand</span>
+<div class="hidden items-start justify-center gap-6 rounded-lg p-8 md:grid lg:grid-cols-2 xl:grid-cols-3">
+    <div class="col-span-2 grid items-start gap-6 lg:col-span-1">
+      <Container>
+        <Card>
+          <CardContent class="pt-6">
+            <div class="space-y-2">
+              <Label for="date" class="shrink-0">
+                Pick a date
+              </Label>
+            </div>
+          </CardContent>
+        </Card>
+      </Container>
     </div>
-
-    <!-- Search bar container -->
-    <div class="flex-1 max-w-xl mx-auto">
-      <div class="relative">
-        <input type="search" class="w-full px-4 py-2 rounded-md" placeholder="Search...">
-        <button type="submit" class="absolute right-2 top-1/2 transform -translate-y-1/2">
-          <i class="fa fa-search text-gray-500"></i>
-        </button>
-      </div>
-    </div>
-
-    <!-- Additional navbar items could go here -->
-  </nav>
+</div>
 </template>
+
 
 <style scoped>
 
