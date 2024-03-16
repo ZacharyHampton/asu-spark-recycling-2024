@@ -1,15 +1,12 @@
 <script>
-  import { Button } from '../shadcn/components/ui/button/index.js'
   import { Input } from '../shadcn/components/ui/input/index.js'
   import { Search } from 'lucide-vue-next'
   import {
   Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from '../shadcn/components/ui/card/index.js'
+  import _ from "lodash";
 
   export default {
       name: "HomeView",
@@ -22,13 +19,26 @@
       },
       data() {
           return {
-              items: [
-                  {
-                      title: "Apple 1",
-                      image_src: "https://tradein.bestbuy.com/catalog/catalog/search-results/6525883/icon?height=120&width=120"
-                  }
-              ]
+              items: []
           }
+      },
+      methods: {
+        search(query) {
+          fetch(`http://localhost:8000/api/v1/search?query=${query}`)
+            .then(response => response.json())
+            .then(data => {
+              this.items = data['products'];
+            })
+        },
+        searchInput: _.debounce(function (event) {
+          let query = event.target.value;
+
+          if (query.length > 0) {
+            this.search(query);
+          } else {
+            this.items = [];
+          }
+        }, 500),
       }
   }
 </script>
@@ -41,12 +51,12 @@
     </div>
     <div class="relative mb-2 max-w-md w-full">
       <Input id="search" type="text" placeholder="Describe your product..."
-             class="pl-8 rounded-2xl border-2 border-shadcngray hover:border-shadcnblack transition-all duration-300 search-font w-full" />
+             class="pl-8 rounded-2xl border-2 border-shadcngray hover:border-shadcnblack transition-all duration-300 search-font w-full" @input="searchInput($event)" />
       <span class="absolute start-0 inset-y-0 flex items-center justify-center" style="padding-left: 8px;">
         <Search class="size-5 text-muted-foreground" />
       </span>
     </div>
-    <div class="w-full max-w-md bg-shadcngray rounded-2xl p-2">
+    <div class="w-full max-w-md bg-shadcngray rounded-2xl p-2" v-if="items.length !== 0">
       <div>
   <Card
           class="border-2 border-white rounded-2xl card-font mb-2 hover:border-shadcnblack cursor-pointer transition-all duration-300"
@@ -55,7 +65,7 @@
   >
     <CardHeader class="p-2">
       <div class="flex items-center">
-        <img :src="item.image_src" alt="" class="w-10 h-10 mr-2 rounded-full">
+        <img :src="item.image_url" alt="" class="w-10 h-10 mr-2 rounded-full">
         <CardTitle>{{ item.title }}</CardTitle>
       </div>
     </CardHeader>
