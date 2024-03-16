@@ -3,3 +3,6 @@ uvicorn
 databases
 motor
 python-dotenv
+capsolver
+requests
+beautifulsoup4
