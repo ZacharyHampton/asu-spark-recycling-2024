@@ -17,6 +17,16 @@ import {
   CardTitle,
 } from '../shadcn/components/ui/card'
 
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from '../shadcn/components/ui/select'
+
 export default {
   name: "HomeView",
   components: {
@@ -33,7 +43,14 @@ export default {
     FormField,
     FormItem,
     FormMessage,
-    Button
+    Button,
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectLabel,
+    SelectTrigger,
+    SelectValue,
   },
   data() {
     return {
@@ -56,7 +73,7 @@ export default {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({status: "working"})
+        body: JSON.stringify({status: status})
       })
         .then(response => response.json())
         .then(data => {
@@ -65,7 +82,7 @@ export default {
     },
     onSubmit(event) {
       event.preventDefault();
-      let status = event.target.status.value;
+      let status = event.target.text.value;
       this.getOffers(this.$route.params.id, status);
     }
   },
@@ -81,7 +98,7 @@ import {Search} from "lucide-vue-next";
   <div class="flex-1 h-screen flex-col items-center justify-start min-h-screen pt-8 pb-8">
     <div class="mx-auto max-w-md bg-shadcngray bg-opacity-65 rounded-2xl p-3 h-full ">
       <!-- Large Card -->
-      <Card class="h-full border-2 border-black rounded-2xl card-font mb-2 w-full h-screen-3/4">
+      <Card class="h-full border-2 border-black rounded-2xl card-font mb-2 w-full overflow-auto">
         <!-- Large card almost full screen size -->
         <CardHeader class="p-2 flex flex-col">
           <!-- Top Left Title inside a Rounded Box -->
@@ -99,7 +116,7 @@ import {Search} from "lucide-vue-next";
               <CardTitle>Condition</CardTitle>
               <CardContent>
                 <form class="w-2/3 space-y-6" @submit="onSubmit">
-                  <FormField v-slot="{ componentField }" name="status">
+                  <FormField v-slot="{ componentField }" name="text">
                     <FormItem>
                       <Select v-bind="componentField">
                         <FormControl>
@@ -129,18 +146,17 @@ import {Search} from "lucide-vue-next";
             <CardTitle><a :href="offers.bestbuy.url">Best Buy</a></CardTitle>
             </CardHeader>
               <CardContent>${{ offers.bestbuy.amount }}</CardContent>
-
           </Card>
 
-                <Card class="border-2 border-shadcngray rounded-2xl card-font" v-if="offers.walmart !== undefined">
+          <Card class="border-2 border-shadcngray rounded-2xl card-font" v-if="offers.walmart !== undefined">
             <CardHeader>
             <CardTitle><a :href="offers.walmart.url">Walmart</a></CardTitle>
             </CardHeader>
               <CardContent>${{ offers.walmart.amount }}</CardContent>
-
           </Card>
-                </CardHeader>
-              </Card>
+
+        </CardHeader>
+      </Card>
     </div>
   </div>
 </template>
