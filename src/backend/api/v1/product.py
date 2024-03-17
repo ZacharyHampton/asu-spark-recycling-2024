@@ -5,7 +5,7 @@ from .models import Product
 from pydantic import BaseModel
 from bson.objectid import ObjectId
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from .offers.models import OfferRequest, Offer
+from .offers.models import OfferRequest, Offer, ProductStatus
 from .offers.walmart import get_walmart_offer
 from .offers.bestbuy import get_bestbuy_offer
 
@@ -54,7 +54,7 @@ async def get_product(uuid: str, db: AsyncIOMotorClient = Depends(get_database))
 async def get_offers(uuid: str, data: OfferRequest, db: AsyncIOMotorClient = Depends(get_database)) -> OfferResponse:
     collection = db["web"]["products"]
 
-    if (data.working and data.broken) or (data.broken and data.damaged):
+    if data.status not in ProductStatus.__members__:
         return OfferResponse(success=False, message="Invalid request.")
 
     product = await collection.find_one({"_id": ObjectId(uuid)})

@@ -1,8 +1,4 @@
-<script setup>
-import { cn } from '../shadcn/lib/utils'
-import { h } from 'vue'
-import * as z from 'zod'
-
+<script>
 import { Button } from '../shadcn/components/ui/button/index.js'
 import {
   FormControl,
@@ -12,15 +8,6 @@ import {
   FormLabel,
   FormMessage,
 } from '../shadcn/components/ui/form/index.js'
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '../shadcn/components/ui/select/index.js'
-import { toast } from '../shadcn/components/ui/toast/index.js'
 
 import {
   Card,
@@ -29,7 +16,63 @@ import {
   CardHeader,
   CardTitle,
 } from '../shadcn/components/ui/card'
-import Container from "@/components/Container.vue";
+
+export default {
+  name: "HomeView",
+  components: {
+    Card,
+    CardHeader,
+    CardTitle,
+    Search,
+    Input,
+    CardContent,
+    CardDescription,
+    FormLabel,
+    FormControl,
+    FormDescription,
+    FormField,
+    FormItem,
+    FormMessage,
+    Button
+  },
+  data() {
+    return {
+      product: {},
+      offers: {},
+    }
+  },
+  methods: {
+    getProduct(id) {
+      fetch(`http://localhost:8000/api/v1/product/${id}`)
+        .then(response => response.json())
+        .then(data => {
+          this.product = data['product'];
+        })
+    },
+    getOffers(id, status) {
+      // post request: "status": "working"
+      fetch(`http://localhost:8000/api/v1/product/${id}/offers`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({status: "working"})
+      })
+        .then(response => response.json())
+        .then(data => {
+          this.offers = data['offers'];
+        })
+    },
+    onSubmit(event) {
+      event.preventDefault();
+      let status = event.target.status.value;
+      this.getOffers(this.$route.params.id, status);
+    }
+  },
+  mounted() {
+    this.getProduct(this.$route.params.id);
+  }
+}
 import {Input} from "@/shadcn/components/ui/input/index.js";
 import {Search} from "lucide-vue-next";
 </script>
@@ -43,11 +86,11 @@ import {Search} from "lucide-vue-next";
         <CardHeader class="p-2 flex flex-col">
           <!-- Top Left Title inside a Rounded Box -->
           <div class="bg-white border-2 border-shadcngray rounded-md p-2 text-shadcnblack">
-            <CardTitle>iPhone 65 Plus Pro Max</CardTitle>
+            <CardTitle>{{ product.title }}</CardTitle>
           </div>
           <!-- Large Image below the title -->
           <div class="my-4">
-            <img src="" alt="Large Image" class="w-full rounded-md">
+            <img :src="product.image_url" alt="Large Image" class="w-full rounded-md">
             <!-- Large image here -->
           </div>
           <!-- Another Card below the image -->
@@ -56,7 +99,7 @@ import {Search} from "lucide-vue-next";
               <CardTitle>Condition</CardTitle>
               <CardContent>
                 <form class="w-2/3 space-y-6" @submit="onSubmit">
-                  <FormField v-slot="{ componentField }" name="email">
+                  <FormField v-slot="{ componentField }" name="status">
                     <FormItem>
                       <Select v-bind="componentField">
                         <FormControl>
@@ -66,9 +109,9 @@ import {Search} from "lucide-vue-next";
                         </FormControl>
                         <SelectContent>
                           <SelectGroup>
-                            <SelectItem class="cursor-pointer" value="m@example.com"> Working </SelectItem>
-                            <SelectItem class="cursor-pointer" value="m@google.com"> Broken </SelectItem>
-                            <SelectItem class="cursor-pointer" value="m@support.com"> Refurbished </SelectItem>
+                            <SelectItem class="cursor-pointer" value="working"> Working </SelectItem>
+                            <SelectItem class="cursor-pointer" value="damaged"> Damaged </SelectItem>
+                            <SelectItem class="cursor-pointer" value="broken"> Broken </SelectItem>
                           </SelectGroup>
                         </SelectContent>
                       </Select>
@@ -81,15 +124,23 @@ import {Search} from "lucide-vue-next";
               </CardContent>
             </CardHeader>
           </Card>
-          <Card class="border-2 border-shadcngray rounded-2xl card-font">
+          <Card class="border-2 border-shadcngray rounded-2xl card-font" v-if="offers !== undefined">
             <CardHeader>
             <CardTitle>Best Buy</CardTitle>
             </CardHeader>
-              <CardContent>$100.50</CardContent>
+              <CardContent>$ {{ offers.bestbuy.amount }}</CardContent>
 
-  </Card>
-        </CardHeader>
-      </Card>
+          </Card>
+
+                <Card class="border-2 border-shadcngray rounded-2xl card-font" v-if="offers !== undefined">
+            <CardHeader>
+            <CardTitle>Walmart</CardTitle>
+            </CardHeader>
+              <CardContent>$ {{ offers.walmart.amount }}</CardContent>
+
+          </Card>
+                </CardHeader>
+              </Card>
     </div>
   </div>
 </template>

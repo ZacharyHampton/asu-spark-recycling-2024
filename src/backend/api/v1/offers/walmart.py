@@ -5,6 +5,7 @@ from urllib import parse
 import requests
 from bs4 import BeautifulSoup
 import re
+from urllib.parse import quote
 
 
 def solve_captcha(site_key: str, url: str) -> dict[str, str]:
@@ -18,7 +19,7 @@ def solve_captcha(site_key: str, url: str) -> dict[str, str]:
 
 
 def get_walmart_offer(url: str, data: OfferRequest) -> Offer:
-    if ["broken", "damaged"] in data.status:
+    if data.status in ["broken", "damaged"]:
         condition = 95
     elif data.status == "working":
         condition = 94
@@ -69,8 +70,9 @@ def get_walmart_offer(url: str, data: OfferRequest) -> Offer:
     dollars = soup.find('span', {'class': 'AppraisalPrice-bucks'})
     cents = soup.find('span', {'class': 'AppraisalPrice-cents'})
 
+    show_url = url.replace(' ', '+')
     if dollars and cents:
         amount = float(dollars.text) + float(cents.text) / 100
-        return Offer(site_name="walmart", amount=amount, url=url)
+        return Offer(site_name="walmart", amount=amount, url=show_url)
 
-    return Offer(site_name="walmart", amount=0, url=url)
+    return Offer(site_name="walmart", amount=0, url=show_url)

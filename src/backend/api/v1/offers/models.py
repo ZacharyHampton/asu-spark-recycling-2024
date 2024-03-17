@@ -9,7 +9,7 @@ class ProductStatus(Enum):
 
 
 class OfferRequest(BaseModel):
-    status: ProductStatus
+    status: str
 
 
 class Offer(BaseModel):

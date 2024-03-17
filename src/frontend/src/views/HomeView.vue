@@ -39,6 +39,14 @@
             this.items = [];
           }
         }, 500),
+        viewProduct(id) {
+          this.$router.push({
+            name: 'product',
+            params: {
+              id: id,
+            }
+          });
+        }
       }
   }
 </script>
@@ -62,6 +70,7 @@
           class="border-2 border-white rounded-2xl card-font mb-2 hover:border-shadcnblack cursor-pointer transition-all duration-300"
           v-for="item in items"
           :key="item.id"
+          @click="viewProduct(item.id)"
   >
     <CardHeader class="p-2">
       <div class="flex items-center">

@@ -9,7 +9,7 @@ const router = createRouter({
     history: createWebHistory(),
     routes: [
         { path: '/', component: HomeView },
-        { path: '/product', component: ProductView },
+        { name: 'product', path: '/product/:id', component: ProductView },
     ]
 });
 
