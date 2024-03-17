@@ -90,7 +90,7 @@ import {Search} from "lucide-vue-next";
           </div>
           <!-- Large Image below the title -->
           <div class="my-4">
-            <img :src="product.image_url" alt="Large Image" class="w-full rounded-md">
+            <img :src="product.image_url" alt="Large Image" class="w-32 rounded-md">
             <!-- Large image here -->
           </div>
           <!-- Another Card below the image -->
@@ -126,17 +126,17 @@ import {Search} from "lucide-vue-next";
           </Card>
           <Card class="border-2 border-shadcngray rounded-2xl card-font" v-if="offers.bestbuy !== undefined">
             <CardHeader>
-            <CardTitle>Best Buy</CardTitle>
+            <CardTitle><a :href="offers.bestbuy.url">Best Buy</a></CardTitle>
             </CardHeader>
-              <CardContent>$ {{ offers.bestbuy.amount }}</CardContent>
+              <CardContent>${{ offers.bestbuy.amount }}</CardContent>
 
           </Card>
 
                 <Card class="border-2 border-shadcngray rounded-2xl card-font" v-if="offers.walmart !== undefined">
             <CardHeader>
-            <CardTitle>Walmart</CardTitle>
+            <CardTitle><a :href="offers.walmart.url">Walmart</a></CardTitle>
             </CardHeader>
-              <CardContent>$ {{ offers.walmart.amount }}</CardContent>
+              <CardContent>${{ offers.walmart.amount }}</CardContent>
 
           </Card>
                 </CardHeader>
