@@ -124,7 +124,7 @@ import {Search} from "lucide-vue-next";
               </CardContent>
             </CardHeader>
           </Card>
-          <Card class="border-2 border-shadcngray rounded-2xl card-font" v-if="offers !== undefined">
+          <Card class="border-2 border-shadcngray rounded-2xl card-font" v-if="offers.bestbuy !== undefined">
             <CardHeader>
             <CardTitle>Best Buy</CardTitle>
             </CardHeader>
@@ -132,7 +132,7 @@ import {Search} from "lucide-vue-next";
 
           </Card>
 
-                <Card class="border-2 border-shadcngray rounded-2xl card-font" v-if="offers !== undefined">
+                <Card class="border-2 border-shadcngray rounded-2xl card-font" v-if="offers.walmart !== undefined">
             <CardHeader>
             <CardTitle>Walmart</CardTitle>
             </CardHeader>
