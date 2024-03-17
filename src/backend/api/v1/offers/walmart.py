@@ -18,9 +18,9 @@ def solve_captcha(site_key: str, url: str) -> dict[str, str]:
 
 
 def get_walmart_offer(url: str, data: OfferRequest) -> Offer:
-    if data.broken or data.damaged:
+    if ["broken", "damaged"] in data.status:
         condition = 95
-    elif data.working:
+    elif data.status == "working":
         condition = 94
     else:
         return Offer(site_name="walmart", amount=0, url=url)

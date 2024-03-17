@@ -15,8 +15,8 @@ def get_bestbuy_offer(url: str, data: OfferRequest) -> Offer:
 
     params = {
         'sku': sku,
-        'crackedscreen-mob-1': 'No' if not data.damaged else 'Yes',
-        'cellphone-condition2': 'Good' if not data.broken else 'Broken',
+        'crackedscreen-mob-1': 'No' if not data.status == "damaged" else 'Yes',
+        'cellphone-condition2': 'Good' if not data.status == "broken" else 'Broken',
         'cell-phones-10': 'Yes'
     }
 

@@ -1,10 +1,15 @@
 from pydantic import BaseModel
+from enum import Enum
+
+
+class ProductStatus(Enum):
+    working = "working"
+    broken = "broken"
+    damaged = "damaged"
 
 
 class OfferRequest(BaseModel):
-    working: bool
-    damaged: bool
-    broken: bool
+    status: ProductStatus
 
 
 class Offer(BaseModel):
